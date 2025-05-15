@@ -2,8 +2,9 @@ package sqlite
 
 import (
 	"database/sql"
+	"errors"
 	"fmt"
-	"github.com/mattn/go-sqlite3"
+	_ "github.com/mattn/go-sqlite3"
 	"url-shortener/internal/storage"
 )
 
@@ -19,18 +20,20 @@ func New(storagePath string) (*Storage, error) {
 		return nil, fmt.Errorf("%s: %w", op, err)
 	}
 
-	stmt, err := db.Prepare(`CREATE TABLE IF NOT EXISTS url (id INTEGER PRIMARY KEY, alias TEXT NOT NULL UNIQUE, url TEXT NOT NULL); CREATE INDEX IF NOT EXISTS idx_alias ON url (alias);`)
-
+	// Создание таблицы
+	_, err = db.Exec(`
+		CREATE TABLE IF NOT EXISTS url (
+			id INTEGER PRIMARY KEY, 
+			alias TEXT NOT NULL UNIQUE, 
+			url TEXT NOT NULL
+		);
+		CREATE INDEX IF NOT EXISTS idx_alias ON url (alias);
+	`)
 	if err != nil {
 		return nil, fmt.Errorf("%s: %w", op, err)
 	}
 
-	_, err = stmt.Exec()
-	if err != nil {
-		return nil, fmt.Errorf("%s: %w", op, err)
-	}
-
-	return &Storage{db: db}, err
+	return &Storage{db: db}, nil
 }
 
 func (s *Storage) SaveURL(urlToSave string, alias string) (int64, error) {
@@ -40,10 +43,11 @@ func (s *Storage) SaveURL(urlToSave string, alias string) (int64, error) {
 	if err != nil {
 		return 0, fmt.Errorf("%s: %w", op, err)
 	}
+	defer stmt.Close()
 
 	res, err := stmt.Exec(alias, urlToSave)
 	if err != nil {
-		if sqliteErr, ok := err.(sqlite3.Error); ok && sqliteErr.ExtendedCode == sqlite3.ErrConstraintUnique {
+		if errors.Is(err, sql.ErrNoRows) {
 			return 0, fmt.Errorf("%s: %w", op, storage.ErrURLExists)
 		}
 		return 0, fmt.Errorf("%s: %w", op, err)
@@ -52,7 +56,6 @@ func (s *Storage) SaveURL(urlToSave string, alias string) (int64, error) {
 	id, err := res.LastInsertId()
 	if err != nil {
 		return 0, fmt.Errorf("%s: failed to get LastInsertId %w", op, err)
-
 	}
 
 	return id, nil
@@ -65,11 +68,12 @@ func (s *Storage) GetURL(alias string) (string, error) {
 	if err != nil {
 		return "", fmt.Errorf("%s: %w", op, err)
 	}
+	defer stmt.Close()
 
 	var url string
 	err = stmt.QueryRow(alias).Scan(&url)
 	if err != nil {
-		if err == sql.ErrNoRows {
+		if errors.Is(err, sql.ErrNoRows) {
 			return "", fmt.Errorf("%s: %w", op, storage.ErrURLNotFound)
 		}
 		return "", fmt.Errorf("%s: %w", op, err)
@@ -85,6 +89,7 @@ func (s *Storage) DeleteURL(alias string) error {
 	if err != nil {
 		return fmt.Errorf("%s: %w", op, err)
 	}
+	defer stmt.Close()
 
 	_, err = stmt.Exec(alias)
 	if err != nil {

@@ -3,10 +3,15 @@ package main
 import (
 	"fmt"
 	"github.com/go-chi/chi/v5"
+	"github.com/joho/godotenv"
 	"log/slog"
+	"net/http"
 	"os"
 	"path/filepath"
 	"url-shortener/internal/config"
+	"url-shortener/internal/http-server/handlers/deleteURL"
+	"url-shortener/internal/http-server/handlers/redirect"
+	"url-shortener/internal/http-server/handlers/url/save"
 	"url-shortener/internal/lib/logger/sl"
 	"url-shortener/internal/storage/sqlite"
 
@@ -20,8 +25,13 @@ const (
 )
 
 func main() {
+
+	if err := godotenv.Load(); err != nil {
+		fmt.Println("Warning: .env file not found or failed to load")
+	}
+
 	cfg := config.MustLoad()
-	log := setupLogger(cfg.Env)
+	var log *slog.Logger = setupLogger(cfg.Env)
 
 	log.Info("Starting URL shortener service", "env", cfg.Env)
 	log.Debug("debug message are enabled")
@@ -50,8 +60,32 @@ func main() {
 	router.Use(middleware.Recoverer)
 	router.Use(middleware.URLFormat)
 
-	_ = storage
-	// TODO: run server
+	router.Route("/url", func(r chi.Router) {
+		r.Use(middleware.BasicAuth("url-shortener", map[string]string{
+			cfg.HttpServer.User: cfg.HttpServer.Password,
+		}))
+
+		r.Post("/", save.New(log, storage))
+		r.Delete("/{alias}", deleteURL.New(log, storage))
+	})
+
+	router.Get("/url/{alias}", redirect.New(log, storage))
+
+	log.Info("starting server", slog.String("address", cfg.Address))
+
+	server := &http.Server{
+		Addr:         cfg.Address,
+		Handler:      router,
+		ReadTimeout:  cfg.HttpServer.Timeout,
+		WriteTimeout: cfg.HttpServer.Timeout,
+		IdleTimeout:  cfg.HttpServer.IdleTimeout,
+	}
+
+	if err := server.ListenAndServe(); err != nil {
+		log.Error("Failed to start server", sl.Err(err))
+	}
+
+	log.Error("Server stopped", sl.Err(err))
 }
 
 func setupLogger(env string) *slog.Logger {
