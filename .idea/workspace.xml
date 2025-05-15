@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="ALL" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="039b959f-e34c-496d-baf5-0ac2c6284132" name="Changes" comment="init" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Go File" />
+      </list>
+    </option>
+  </component>
+  <component name="GOROOT" url="file://$PROJECT_DIR$/../../bin/pkg/mod/golang.org/toolchain@v0.0.1-go1.23.9.windows-amd64" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "Anemiaaaa"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Anemiaaaa/url-shorter.git",
+    "accountId": "4e5f3483-3ea8-449b-9f01-1492a654b02c"
+  }
+}]]></component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="2x5YvBocLcFTBMxpzNrq16Ma7aP" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultGoTemplateProperty": "Go File",
+    "Go Build.go build url-shortener/cmd/url-shortener.executor": "Run",
+    "Go Test.TestSaveHandler in url-shortener/internal/http-server/handlers/redirect.executor": "Run",
+    "Go Test.TestURLShortener_HappyPath in url-shortener/tests.executor": "Run",
+    "Go Test.TestURLShortener_SaveRedirect in url-shortener/tests.executor": "Run",
+    "Go Test.go test url-shortener/internal/http-server/handlers/url/save.executor": "Run",
+    "Go Test.go test url-shortener/internal/lib/random.executor": "Run",
+    "Go Test.go test url-shortener/tests.executor": "Run",
+    "Go Test.gobench url-shortener/internal/lib/random.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.go.formatter.settings.were.checked": "true",
+    "RunOnceActivity.go.migrated.go.modules.settings": "true",
+    "RunOnceActivity.go.modules.go.list.on.any.changes.was.set": "true",
+    "git-widget-placeholder": "main",
+    "go.import.settings.migrated": "true",
+    "last_opened_file_path": "C:/dev/sdk/go/src/url-shortener/config",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "onboarding.tips.debug.path": "C:/dev/sdk/go/src/url-shortener/main.go",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\dev\sdk\go\src\url-shortener\config" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\dev\sdk\go\src\url-shortener\internal\lib\logger\handlers" />
+      <recent name="C:\dev\sdk\go\src\url-shortener\internal\http-server\handlers" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Go Build.go build url-shortener/cmd/url-shortener">
+    <configuration name="go build url-shortener/cmd/url-shortener" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="url-shortener" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="url-shortener/cmd/url-shortener" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$/cmd/url-shortener/main.go" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestSaveHandler in url-shortener/internal/http-server/handlers/redirect" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="url-shortener" />
+      <working_directory value="$PROJECT_DIR$/internal/http-server/handlers/redirect" />
+      <root_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="url-shortener/internal/http-server/handlers/redirect" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <pattern value="^\QTestSaveHandler\E$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestURLShortener_HappyPath in url-shortener/tests" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="url-shortener" />
+      <working_directory value="$PROJECT_DIR$/tests" />
+      <root_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="url-shortener/tests" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <pattern value="^\QTestURLShortener_HappyPath\E$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestURLShortener_SaveRedirect in url-shortener/tests" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="url-shortener" />
+      <working_directory value="$PROJECT_DIR$/tests" />
+      <root_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="url-shortener/tests" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <pattern value="^\QTestURLShortener_SaveRedirect\E$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go test url-shortener/tests" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="url-shortener" />
+      <working_directory value="$PROJECT_DIR$/tests" />
+      <root_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="url-shortener/tests" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Go Build.go build url-shortener/cmd/url-shortener" />
+        <item itemvalue="Go Test.go test url-shortener/tests" />
+        <item itemvalue="Go Test.TestURLShortener_SaveRedirect in url-shortener/tests" />
+        <item itemvalue="Go Test.TestURLShortener_HappyPath in url-shortener/tests" />
+        <item itemvalue="Go Test.TestSaveHandler in url-shortener/internal/http-server/handlers/redirect" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-gosdk-5df93f7ad4aa-df9ad98b711f-org.jetbrains.plugins.go.sharedIndexes.bundled-GO-242.23339.24" />
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-GO-242.23339.24" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="all" />
+    <MESSAGE value="init" />
+    <option name="LAST_COMMIT_MESSAGE" value="init" />
+  </component>
+  <component name="VgoProject">
+    <settings-migrated>true</settings-migrated>
+  </component>
+</project>

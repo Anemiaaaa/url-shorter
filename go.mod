@@ -1,6 +1,8 @@
 module url-shortener
 
-go 1.23
+go 1.23.0
+
+toolchain go1.23.2
 
 require (
 	github.com/brianvoe/gofakeit/v6 v6.28.0
